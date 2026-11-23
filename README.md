@@ -1,11 +1,11 @@
 # Tobeer Fraternity House — sito
 
-Sito statico di https://tobeerfraternityhouse.it (hosting SiteGround).
+Sito statico di https://tobeerfraternityhouse.it (hosting cPanel).
 
 ## Come si aggiorna
 1. Si modificano i file dentro `sito/`.
 2. Si fa commit e push su `main`.
-3. La GitHub Action "Pubblica su SiteGround" carica via FTP solo i file cambiati (1–2 minuti).
+3. La GitHub Action "Pubblica sul server" carica via FTP solo i file cambiati (1–2 minuti).
 
 Niente più FileZilla. La password FTP è salvata nei Secrets del repository (`FTP_PASSWORD`).
 

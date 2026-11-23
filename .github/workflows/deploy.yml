@@ -1,4 +1,4 @@
-name: Pubblica su SiteGround
+name: Pubblica sul server
 
 on:
   push:
