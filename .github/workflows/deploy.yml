@@ -1,0 +1,34 @@
+name: Pubblica su SiteGround
+
+on:
+  push:
+    branches: [main]
+    paths: ["sito/**", ".github/workflows/deploy.yml"]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Carica via FTP (solo i file cambiati)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.tobeerfraternityhouse.it
+          username: tobeerfraternityhouse@tobeerfraternityhouse.it
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./sito/
+          server-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .ftpquota
+            cgi-bin/**
+            .well-known/**
