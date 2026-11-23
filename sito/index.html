@@ -81,10 +81,50 @@ body {
 }
 
 </style>
-<link rel="stylesheet" href="css/responsive.css?v=2" type="text/css" />
+<link rel="stylesheet" href="css/responsive.css?v=3" type="text/css" />
 
 
 <div class="container">
+<link rel="stylesheet" href="css/countdown-usa.css?v=1" type="text/css" />
+
+<!-- ===== COUNTDOWN MENU USA (3 dicembre 2026, 19:00) ===== -->
+<section class="usa-cd" id="usa-countdown" aria-label="Countdown nuovo menù USA">
+    <div class="usa-cd__top"><span>Tobeer®</span><span>American Culture / 1980—1990</span></div>
+    <div class="usa-cd__flag" aria-hidden="true"><div class="usa-cd__stars">★ ★ ★ ★ ★</div></div>
+    <h2 class="usa-cd__title">Not just a menu.</h2>
+    <p class="usa-cd__sub">Il nuovo <strong>menù USA</strong> arriva il <strong>3 dicembre</strong> alle 19:00.</p>
+    <div class="usa-cd__clock" role="timer" aria-live="off">
+        <div class="usa-cd__cell"><span class="usa-cd__num" data-u="d">--</span><span class="usa-cd__lab">Giorni</span></div>
+        <div class="usa-cd__cell"><span class="usa-cd__num" data-u="h">--</span><span class="usa-cd__lab">Ore</span></div>
+        <div class="usa-cd__cell"><span class="usa-cd__num" data-u="m">--</span><span class="usa-cd__lab">Min</span></div>
+        <div class="usa-cd__cell"><span class="usa-cd__num" data-u="s">--</span><span class="usa-cd__lab">Sec</span></div>
+    </div>
+    <div class="usa-cd__live">It's here! Il menù USA è servito</div>
+    <div class="usa-cd__bottom"><span>Food / Art / Culture</span><i></i><span>Est. 2013</span></div>
+    <div class="usa-cd__checker" aria-hidden="true"></div>
+</section>
+<script>
+(function () {
+    var target = new Date("2026-12-03T19:00:00+01:00").getTime();
+    var box = document.getElementById("usa-countdown");
+    if (!box) return;
+    var el = {};
+    ["d","h","m","s"].forEach(function (k) { el[k] = box.querySelector('[data-u="' + k + '"]'); });
+    function pad(n) { return (n < 10 ? "0" : "") + n; }
+    function tick() {
+        var diff = target - Date.now();
+        if (diff <= 0) { box.classList.add("is-live"); return; }
+        var s = Math.floor(diff / 1000);
+        el.d.textContent = pad(Math.floor(s / 86400));
+        el.h.textContent = pad(Math.floor(s % 86400 / 3600));
+        el.m.textContent = pad(Math.floor(s % 3600 / 60));
+        el.s.textContent = pad(s % 60);
+        setTimeout(tick, 1000 - (Date.now() % 1000));
+    }
+    tick();
+})();
+</script>
+<!-- ===== FINE COUNTDOWN ===== -->
 
     <div class="immagine">
 
