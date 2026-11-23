@@ -34,7 +34,7 @@ img, video { max-width: 100%; height: auto; }
     .immagine > img,
     .immagine > video,
     .immagine > a > img {
-        max-width: 760px;
+        max-width: 560px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -67,7 +67,7 @@ img, video { max-width: 100%; height: auto; }
 
     .immagine > img,
     .immagine > video,
-    .immagine > a > img { max-width: 980px; }
+    .immagine > a > img { max-width: 620px; }
 
     .d {
         padding-left: max(48px, calc((100% - 1180px) / 2));
@@ -106,5 +106,5 @@ img, video { max-width: 100%; height: auto; }
 @media screen and (min-width: 1600px) {
     .immagine > img,
     .immagine > video,
-    .immagine > a > img { max-width: 1080px; }
+    .immagine > a > img { max-width: 680px; }
 }
