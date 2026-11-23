@@ -1,0 +1,110 @@
+/* =========================================================
+   TOBEER — LAYOUT RESPONSIVE (mobile / tablet / desktop)
+   Caricato DOPO gli altri stili: aggiunge solo regole per
+   tablet e desktop. Il mobile (< 768px) resta com'era.
+
+   Mobile ............ fino a 767px   (colonna unica, invariato)
+   Tablet verticale .. 768 – 1099px   (colonna unica, più ariosa)
+   Tablet orizz./Desk  da 1100px      (piatti su 2 colonne)
+   ========================================================= */
+
+/* ---------- Base: niente scroll orizzontale, media fluidi ---------- */
+html, body { overflow-x: hidden; }
+img, video { max-width: 100%; height: auto; }
+
+/* ---------- Tablet verticale ---------- */
+@media screen and (min-width: 768px) {
+
+    /* il contenitore non è più bloccato a 700px */
+    .container,
+    .navigation,
+    .navigation2 { max-width: none; }
+
+    .container img { max-width: none; }
+
+    /* menù di navigazione fisso: a tutta larghezza, centrato */
+    .navigation {
+        left: 0;
+        right: 0;
+        padding: 12px 24px 10px;
+        box-sizing: border-box;
+    }
+
+    /* testata e banner di sezione: larghezza massima, centrati */
+    .immagine > img,
+    .immagine > video,
+    .immagine > a > img {
+        max-width: 760px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #logo { max-width: 260px; }
+
+    /* sezioni: lo sfondo colorato resta a tutta larghezza,
+       il contenuto si ferma a una larghezza leggibile */
+    .d {
+        padding-left: max(40px, calc((100% - 760px) / 2));
+        padding-right: max(40px, calc((100% - 760px) / 2));
+        font-size: 24px;
+        line-height: 1.35;
+    }
+    .d.intro { font-size: 22px; }
+
+    .d h2 { font-size: 64px; line-height: 1; }
+    .d h3 { font-size: 30px; line-height: 1.1; }
+    .d h4 { font-size: 24px; line-height: 1.2; }
+
+    .ricetta { padding: 20px 0 26px; }
+
+    /* home: link FOOD / DRINKS */
+    .navigation2 a { font-size: 72px; line-height: 96px; }
+}
+
+/* ---------- Tablet orizzontale e desktop ---------- */
+@media screen and (min-width: 1100px) {
+
+    .navigation a { font-size: 22px; line-height: 30px; }
+
+    .immagine > img,
+    .immagine > video,
+    .immagine > a > img { max-width: 980px; }
+
+    .d {
+        padding-left: max(48px, calc((100% - 1180px) / 2));
+        padding-right: max(48px, calc((100% - 1180px) / 2));
+        font-size: 21px;
+    }
+
+    .d h2 { font-size: 72px; }
+    .d h3 { font-size: 26px; }
+
+    /* piatti su 2 colonne: solo nelle sezioni che contengono piatti */
+    .d:has(> .ricetta) {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        column-gap: 64px;
+    }
+    /* tutto ciò che non è un piatto (titoli, immagini, note) resta a tutta riga */
+    .d:has(> .ricetta) > * { flex: 0 0 100%; }
+    .d:has(> .ricetta) > .ricetta {
+        flex: 0 0 calc(50% - 32px);
+        box-sizing: border-box;
+        display: block;
+    }
+
+    /* riga finale: niente bordo sotto agli ultimi piatti di ogni colonna */
+    .d:has(> .ricetta) > .ricetta:last-of-type { border-bottom: none; }
+
+    /* le liste allergeni restano su una colonna larga */
+    .sezione-allergeni > .ricetta { flex-basis: 100% !important; }
+
+    .navigation2 a { font-size: 96px; line-height: 120px; }
+}
+
+/* ---------- Schermi molto grandi ---------- */
+@media screen and (min-width: 1600px) {
+    .immagine > img,
+    .immagine > video,
+    .immagine > a > img { max-width: 1080px; }
+}
